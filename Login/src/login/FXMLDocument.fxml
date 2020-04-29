@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="287.0" prefWidth="320" stylesheets="@loginStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.FXMLDocumentController">
+   <children>
+      <JFXTextField labelFloat="true" layoutX="71.0" layoutY="107.0" prefHeight="26.0" prefWidth="202.0" promptText="Username" />
+      <JFXButton layoutX="71.0" layoutY="232.0" prefHeight="27.0" prefWidth="74.0" styleClass="login-button" text="Login" />
+      <JFXButton layoutX="172.0" layoutY="232.0" prefHeight="27.0" prefWidth="74.0" styleClass="login-button" text="Cancel" />
+      <ImageView layoutX="132.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/lock.png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="38.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/user.png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="38.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/key.png" />
+         </image>
+      </ImageView>
+      <JFXPasswordField labelFloat="true" layoutX="70.0" layoutY="172.0" prefHeight="38.0" prefWidth="202.0" promptText="Password" />
+   </children>
+</AnchorPane>

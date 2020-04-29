@@ -1,0 +1,161 @@
+
+*{
+    -fx-primary : #2A2E37;
+    -fx-secondary : #FFFF8D;
+    -fx-primarytext : #E4E0E0;
+    -fx-red: #FF0000;
+    -fx-blue: #1976D2;
+    -fx-color-1:#1976D2;
+}
+
+.root{
+    -fx-background-color: -fx-primary;
+}
+
+
+.common-button{
+    -fx-text-fill: -fx-primarytext;
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-secondary;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-font-size: 14px;
+    
+}
+
+.common-button:hover{
+    -fx-border-color: -fx-secondary;
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-primary;
+    
+}
+
+.text-field {
+    -fx-text-fill: -fx-primarytext;
+    -fx-font-size : 12pt;
+    -jfx-focus-color : -fx-secondary;
+    -fx-text-fill: derive(-fx-secondary, 20%);
+    -fx-prompt-text-fill: derive(#E4E0E0, -35%);
+}
+
+
+.wrong-credentials{
+    -jfx-unfocus-color:-fx-red;
+    -jfx-focus-color:-fx-red;
+}
+
+/* Main Screen CSS Styling starts here */
+
+/*TabPane styling*/
+
+.tab {
+    -fx-background-color: -fx-primary;
+    -fx-pref-width : 350;
+    -fx-pref-height: 60;
+}
+
+
+
+.tab-header-background{
+    -fx-background-color: -fx-primary;
+}
+
+.tab-label{
+    -fx-text-fill: white;
+    -fx-font-size: 10pt; 
+}
+
+
+.tab-main{
+    -fx-pref-height : 60;
+    -fx-max-height : 60;
+    
+}
+
+/*Menu bar Sryling*/
+.menu-bar{
+    -fx-base : -fx-primary;
+    -fx-background-color: -fx-primary;
+}
+
+.context-menu{
+    -fx-background-color: derive(-fx-primary, 20%);
+}
+
+/*Hamburger Styling*/
+.jfx-hamburger-icon{
+    -fx-spaspacing : 7;
+}
+
+.jfx-hamburger-icon StackPane{
+   -fx-background-color: -fx-secondary; 
+   -fx-background-radius: 5px;
+} 
+
+
+/*Toolbar buutons*/
+
+.toolbar-button{
+    -fx-background-color: derive(-fx-primary, 20%);
+    -fx-text-fill: -fx-primarytext;
+    -fx-background-radius: 0px;
+}
+
+.toolbar-button:hover{
+    -fx-background-color: derive(-fx-primary, 50%);
+    
+}
+
+
+/*Text Styling*/
+
+.main-text{
+    -fx-fill: -fx-secondary;
+    -fx-font-size: 14pt;
+}
+
+
+
+
+.submission-container {
+    -fx-background-color: derive(-fx-primary, 20%);
+}
+
+/*Dialog Styling*/
+
+.dialog-button{
+    -fx-background-color: -fx-blue;
+    -fx-border-color: -fx-blue;
+    -fx-text-fill:white;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}
+
+.dialog-button:hover{
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -primary;
+    -fx-text-fill:white;
+}
+
+.jfx-layout-action{
+    -fx-hgap: 8;
+}
+
+/*Chart Styling*/
+
+.data0.chart-pie{
+    -fx-pie-color: -fx-secondary;
+    -fx-border-color: derive(-fx-secondary, -30%);
+    
+}
+
+.data1.chart-pie{
+    -fx-pie-color: -fx-blue;
+    -fx-border-color: derive(-fx-blue, -30%);
+}
+
+.chart-pie-label{
+    -fx-fill:-fx-secondary;
+     
+}
+
