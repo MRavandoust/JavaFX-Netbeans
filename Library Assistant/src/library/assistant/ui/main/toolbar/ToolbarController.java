@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import library.assistant.util.LibraryAssistantUtil;
 
-
 public class ToolbarController implements Initializable {
 
     /**
