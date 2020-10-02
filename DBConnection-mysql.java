@@ -1,43 +1,28 @@
 package library.assistant.database;
 
-
 import java.sql.*;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import java.util.logging.Level;
-import java.util.logging.*;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
+import javax.swing.JOptionPane;
 import library.assistant.ui.listbook.Book;
 import library.assistant.ui.listbook.BookListController;
 import library.assistant.ui.listmember.Member;
 
+public class DBConnection {
 
+    private static DBConnection dc = null;
 
+    private final String url = "jdbc:mysql://localhost:3306/book";
+    private final String user = "root";
+    private final String password = "";
+    private static Connection conn;
+    private static Statement stmt;
 
-
-
-
-
-public final class DBConnection {
-    
-   
-
-    private static DBConnection dc;
-
-    private static final String URL = "jdbc:derby:Database;create=true";
-    private static Connection conn ;
-    private static Statement stmt ;
-
-	 
-
-    private DBConnection() { 
+    private DBConnection() {
         connect();
-        setupBookTable();
-        setupMemberTable();
-        setupIssueTable();
     }
 
     public static DBConnection getInstance() {
@@ -46,134 +31,19 @@ public final class DBConnection {
         }
         return dc;
     }
-    
-    
-    private static void connect() {
 
-            try {
-                Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
-                conn = DriverManager.getConnection(URL);
-                System.out.println("Connected to Database!!!!!!!!!");
-            } catch (ClassNotFoundException | SQLException e) {
-                e.printStackTrace();
-            } catch (InstantiationException ex) {
+    private Connection connect() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(url, user, password);
+            return conn;
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Cant Load Database", "Database Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
         }
-
+        return null;
     }
-	
-    
-    
-    void setupBookTable(){
-                    String TABLE8NAME = "books";
-        try {
-            stmt = conn.createStatement();
-            DatabaseMetaData dbm = conn.getMetaData();
-            ResultSet tables = dbm.getTables(null, null, TABLE8NAME, null);
-            if(tables.next()){
-                System.out.println("Table " + TABLE8NAME + "already exists. Ready for go!");
-            }else{
-                stmt.execute("CREATE TABLE " + TABLE8NAME + "("
-                        + " book_id varchar(200) primary key, \n"
-                        + " book_title varchar(200), \n"
-                        + " book_author varchar(200), \n"
-                        + " book_publisher varchar(100), \n"
-                        + " availability boolean default true"
-                        + ")");
-            }
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage() + "... setupDatabase");
-        }finally{
-            
-        }
-        
-    }
-    
-
-        void setupMemberTable(){
-                    String TABLE8NAME = "members";
-        try {
-            stmt = conn.createStatement();
-            DatabaseMetaData dbm = conn.getMetaData();
-            ResultSet tables = dbm.getTables(null, null, TABLE8NAME, null);
-            if(tables.next()){
-                System.out.println("Table " + TABLE8NAME + "already exists. Ready for go!");
-            }else{
-                stmt.execute("CREATE TABLE " + TABLE8NAME + "("
-                        + " id varchar(20) primary key, \n"
-                        + " name varchar(200), \n"
-                        + " mobile varchar(200), \n"
-                        + " email varchar(100)"
-                        + ")");
-            }
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage() + "... setupDatabase");
-        }finally{    
-        }  
-    }
-        
-        void setupIssueTable(){
-                    String TABLE8NAME = "issue";
-        try {
-            stmt = conn.createStatement();
-            DatabaseMetaData dbm = conn.getMetaData();
-            ResultSet tables = dbm.getTables(null, null, TABLE8NAME, null);
-            if(tables.next()){
-                System.out.println("Table " + TABLE8NAME + "already exists. Ready for go!");
-            }else{
-                stmt.execute("CREATE TABLE " + TABLE8NAME + "("
-                        + " bookID varchar(50) primary key, \n"
-                        + " memberID varchar(50), \n"
-                        + " issuTime timestamp default CURRENT_TIMESTAMP, \n"
-                        + " renew_count integer default 0"
-                        + ")");
-            }
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage() + "... setupDatabase");
-        }finally{    
-        }  
-    }
-
-  
-        
-        
-        
-   
-    
-        private static Set<String> getDBTables() throws SQLException {
-        Set<String> set = new HashSet<>();
-        DatabaseMetaData dbmeta = conn.getMetaData();
-        readDBTable(set, dbmeta, "TABLE", null);
-        return set;
-    }
-        
-        
-    private static void readDBTable(Set<String> set, DatabaseMetaData dbmeta, String searchCriteria, String schema) throws SQLException {
-        ResultSet rs = dbmeta.getTables(null, schema, null, new String[]{searchCriteria});
-        while (rs.next()) {
-            set.add(rs.getString("TABLE_NAME").toLowerCase());
-        }
-    }    
-        
-	
-    
-   private static void createTables(List<String> tableData) throws SQLException {
-        Statement statement = conn.createStatement();
-        statement.closeOnCompletion();
-        for (String command : tableData) {
-            System.out.println(command);
-            statement.addBatch(command);
-        }
-        statement.executeBatch();
-    } 
-    
-    
-    
-    
-    
-    
 
     public boolean execAction(String query) {
         try {
@@ -310,8 +180,4 @@ public final class DBConnection {
     }
 
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 6ea28abae198abf03885b8f262dc184b23bae0cc

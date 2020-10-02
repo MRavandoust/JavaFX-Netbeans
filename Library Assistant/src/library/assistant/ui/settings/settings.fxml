@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="269.0" prefWidth="342.0" stylesheets="@../../../../resources/common.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.assistant.ui.settings.SettingsController">
+<AnchorPane id="AnchorPane" prefHeight="317.0" prefWidth="355.0" stylesheets="@../../../../resources/dark-theme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.assistant.ui.settings.SettingsController">
    <children>
       <VBox layoutX="14.0" layoutY="14.0" prefHeight="222.0" prefWidth="342.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -34,10 +34,10 @@
             </JFXPasswordField>
          </children>
       </VBox>
-      <HBox layoutX="-1.0" layoutY="246.0" prefHeight="46.0" prefWidth="342.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <HBox layoutX="6.0" layoutY="246.0" prefHeight="38.0" prefWidth="342.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="7.0">
          <children>
-            <JFXButton onAction="#handleSaveButtonAction" prefHeight="90.0" prefWidth="200.0" text="Save" />
-            <JFXButton layoutX="10.0" layoutY="10.0" onAction="#handleCancelButtonAction" prefHeight="90.0" prefWidth="200.0" text="Cancel" />
+            <JFXButton onAction="#handleSaveButtonAction" prefHeight="90.0" prefWidth="200.0" styleClass="common-button" text="Save" />
+            <JFXButton layoutX="10.0" layoutY="10.0" onAction="#handleCancelButtonAction" prefHeight="90.0" prefWidth="200.0" styleClass="common-button" text="Cancel" />
          </children>
       </HBox>
    </children>
